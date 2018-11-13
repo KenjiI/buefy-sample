@@ -1,13 +1,25 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="this.$store.state.authorization">
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
   </div>
+  <div v-else>
+    <login />
+  </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue';
+import Login from './views/Login.vue';
+
+export default Vue.extend({
+  components: { Login },
+});
+</script>
+
 <style lang="scss">
-$family-sans-serif: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+
 </style>
